@@ -35,8 +35,12 @@ Certifique-se de ter as seguintes ferramentas instaladas:
 
 3.  **API:**
    Você pode acessar a API disponibilizada pela equipe do back-end na seguinte URL:https://cars-api-y4ym.onrender.com/api/docs#/Cars/apps_cars_api_create_car
+    Considere para logar:
+    Usuário: gu03fernandes.s@gmail.com
+    Senha: 123
 
-4.  **Inicie o servidor de desenvolvimento:**
+
+5.  **Inicie o servidor de desenvolvimento:**
     Após a instalação das dependências, você pode iniciar a aplicação:
     ```bash
     npm run dev
