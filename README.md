@@ -1,36 +1,79 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Tech Cars
 
-## Getting Started
+Um sistema web para gerenciamento de veículos, permitindo login de usuários, listagem, criação, edição e exclusão de carros."
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Como Rodar o Projeto Localmente
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Siga estas instruções para configurar e executar o projeto em sua máquina local.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Pré-requisitos
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Certifique-se de ter as seguintes ferramentas instaladas:
 
-## Learn More
+* **Node.js**: Versão 18.x ou superior. Você pode baixá-lo em [nodejs.org](https://nodejs.org/).
+* **npm** ou **Yarn**: Gerenciadores de pacotes Node.js (geralmente vêm com o Node.js).
+    * Para verificar o npm: `npm -v`
+    * Para verificar o Yarn: `yarn -v` (se não tiver, instale com `npm install -g yarn`)
+* **Git**: Para clonar o repositório. Baixe em [git-scm.com](https://git-scm.com/).
 
-To learn more about Next.js, take a look at the following resources:
+### Instalação e Execução
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1.  **Clone o repositório:**
+    Abra seu terminal ou prompt de comando e execute:
+    ```bash
+    git clone [https://github.com/Gu-Fernandes/Cars-Tech.git](https://github.com/Gu-Fernandes/Cars-Tech.git)
+    cd Cars-Tech # Ou cd para a pasta raiz do seu projeto se já clonou
+    ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+2.  **Instale as dependências:**
+    Navegue até o diretório do projeto clonado e instale as dependências:
+    ```bash
+    npm install
+    # OU
+    yarn install
+    ```
 
-## Deploy on Vercel
+3.  **Configurar Variáveis de Ambiente (Opcional, mas recomendado para APIs):**
+    Se sua API de backend tiver um URL diferente para desenvolvimento ou se você tiver chaves de API, crie um arquivo `.env.local` na raiz do projeto (mesmo nível de `package.json`) e adicione suas variáveis:
+    ```
+    NEXT_PUBLIC_API_URL=[https://cars-api-y4ym.onrender.com/api](https://cars-api-y4ym.onrender.com/api) # Exemplo para o seu caso
+    ```
+    * **Observação**: `NEXT_PUBLIC_` é necessário para variáveis de ambiente que serão acessíveis no lado do cliente com Next.js.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+4.  **Inicie o servidor de desenvolvimento:**
+    Após a instalação das dependências, você pode iniciar a aplicação:
+    ```bash
+    npm run dev
+    # OU
+    yarn dev
+    ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+    O aplicativo estará disponível em `http://localhost:3000`.
+
+---
+
+
+### Principais Tecnologias
+
+* **Next.js**: Framework React para construção de aplicações web.
+    * **Decisão**: Escolhido por sua capacidade de otimização de performance, roteamento baseado em arquivos e API Routes. 
+* **React**: Biblioteca JavaScript para construção de interfaces de usuário.
+    * **Decisão**: Utilizado para criar uma interface de usuário facilitando a organização do código, a reutilização de componentes e a manutenção.
+* **Tailwind CSS**: Framework CSS utility-first.
+    * **Decisão**: Permite estilizar componentes diretamente no JSX com classes utilitárias, evitando a necessidade de escrever CSS do zero.
+* **TypeScript**: 
+    * **Decisão**: A tipagem ajuda a identificar erros em tempo de desenvolvimento, melhora a refatoração e oferece um autocompletar mais eficiente em editores de código.
+* **Hooks do React (useState, useEffect, useRouter)**:
+    * **`useState`**: Para gerenciar o **estado local** dos componentes (e-mail, senha, lista de carros, estados de carregamento e erro, filtros, etc.).
+    * **`useEffect`**: Utilizado para realizar **efeitos colaterais** (como buscar dados da API após o carregamento do componente ou quando um estado específico muda).
+    * **`useRouter`**: Hook do Next.js para **navegação programática** entre as rotas da aplicação (ex: redirecionar para o dashboard após o login).
+
+### Arquitetura da Aplicação
+
+* **Client Components (`"use client"`)**: Utilizado para páginas e componentes que requerem **interatividade no navegador**, como a página de login e o dashboard com manipulação de formulários e estados dinâmicos.
+* **Gerenciamento de Estado**: O estado da aplicação é gerenciado principalmente através de **`useState` hooks** diretamente nos componentes que precisam deles, mantendo a simplicidade para estados locais. Para estados mais complexos ou globais em uma aplicação maior, consideraríamos Context API ou bibliotecas como Redux/Zustand.
+    * **Decisão**: Após o login, o `access_token` é armazenado no `localStorage`. Este token é enviado em requisições subsequentes para endpoints protegidos da API, garantindo que apenas usuários autenticados possam acessar dados e funcionalidades restritas. O `email` do usuário também é armazenado para conveniência.
+
+---
