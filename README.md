@@ -12,11 +12,9 @@ Siga estas instruções para configurar e executar o projeto em sua máquina loc
 
 Certifique-se de ter as seguintes ferramentas instaladas:
 
-* **Node.js**: Versão 18.x ou superior. Você pode baixá-lo em [nodejs.org](https://nodejs.org/).
-* **npm** ou **Yarn**: Gerenciadores de pacotes Node.js (geralmente vêm com o Node.js).
-    * Para verificar o npm: `npm -v`
-    * Para verificar o Yarn: `yarn -v` (se não tiver, instale com `npm install -g yarn`)
-* **Git**: Para clonar o repositório. Baixe em [git-scm.com](https://git-scm.com/).
+* **Node.js**
+* **npm** ou **Yarn**
+* **Git**
 
 ### Instalação e Execução
 
@@ -35,12 +33,8 @@ Certifique-se de ter as seguintes ferramentas instaladas:
     yarn install
     ```
 
-3.  **Configurar Variáveis de Ambiente (Opcional, mas recomendado para APIs):**
-    Se sua API de backend tiver um URL diferente para desenvolvimento ou se você tiver chaves de API, crie um arquivo `.env.local` na raiz do projeto (mesmo nível de `package.json`) e adicione suas variáveis:
-    ```
-    NEXT_PUBLIC_API_URL=[https://cars-api-y4ym.onrender.com/api](https://cars-api-y4ym.onrender.com/api) # Exemplo para o seu caso
-    ```
-    * **Observação**: `NEXT_PUBLIC_` é necessário para variáveis de ambiente que serão acessíveis no lado do cliente com Next.js.
+3.  **API:**
+   Você pode acessar a API disponibilizada pela equipe do back-end na seguinte URL:https://cars-api-y4ym.onrender.com/api/docs#/Cars/apps_cars_api_create_car
 
 4.  **Inicie o servidor de desenvolvimento:**
     Após a instalação das dependências, você pode iniciar a aplicação:
