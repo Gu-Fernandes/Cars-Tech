@@ -4,7 +4,7 @@ Um sistema web para gerenciamento de veículos, permitindo login de usuários, l
 
 ---
 
-## Como Rodar o Projeto Localmente
+## Como Rodar o Projeto Localmente?
 
 Siga estas instruções para configurar e executar o projeto em sua máquina local.
 
@@ -73,7 +73,7 @@ Certifique-se de ter as seguintes ferramentas instaladas:
 ### Arquitetura da Aplicação
 
 * **Client Components (`"use client"`)**: Utilizado para páginas e componentes que requerem **interatividade no navegador**, como a página de login e o dashboard com manipulação de formulários e estados dinâmicos.
-* **Gerenciamento de Estado**: O estado da aplicação é gerenciado principalmente através de **`useState` hooks** diretamente nos componentes que precisam deles, mantendo a simplicidade para estados locais. Para estados mais complexos ou globais em uma aplicação maior, consideraríamos Context API ou bibliotecas como Redux/Zustand.
-    * **Decisão**: Após o login, o `access_token` é armazenado no `localStorage`. Este token é enviado em requisições subsequentes para endpoints protegidos da API, garantindo que apenas usuários autenticados possam acessar dados e funcionalidades restritas. O `email` do usuário também é armazenado para conveniência.
+* **Gerenciamento de Estado**: O estado da aplicação é gerenciado principalmente através de **`useState` hooks** diretamente nos componentes que precisam deles, mantendo a simplicidade para estados locais. 
+    * **Decisão**: Após o login, o `access_token` é armazenado no `localStorage`. Este token é enviado em requisições subsequentes para endpoints protegidos da API, garantindo que apenas usuários autenticados possam acessar dados e funcionalidades restritas. O `email` do usuário também é armazenado.
 
 ---
