@@ -20,13 +20,14 @@ export default function Dashboard() {
         sold: false,
     });
 
+    //funções para o botão 'Ver todos os carros'
     const listarCarros = async () => {
         setCarregando(true);
         setErro("");
         setCarros([]);
 
         try {
-            const token = localStorage.getItem("token");
+            const token = localStorage.getItem("token"); //recupera o token de localStorage para validar
             if (!token) {
                 setErro("Token não encontrado. Faça login novamente.");
                 setCarregando(false);
@@ -34,7 +35,7 @@ export default function Dashboard() {
             }
 
             const resposta = await fetch("https://cars-api-y4ym.onrender.com/api/cars", {
-                method: "GET",
+                method: "GET", //metodo da API para listar carros
                 headers: {
                     Authorization: `Bearer ${token}`,
                     "Content-Type": "application/json",
@@ -114,7 +115,7 @@ export default function Dashboard() {
         setErro("");
     };
 
-    // Função para abrir modal para criação de novo carro
+    //modal para criação de novo carro
     const abrirCriacao = () => {
         const token = localStorage.getItem("token");
         if (!token) {
@@ -304,14 +305,14 @@ export default function Dashboard() {
                         onClick={listarCarros}
                         className="bg-blue-800 hover:bg-blue-900 text-white font-semibold py-2 px-4 rounded-xl"
                     >
-                        
+
                         {carregando ? "Carregando..." : "Ver todos os carros"}
                     </button>
 
                     <button
                         onClick={() => setFiltro("vendidos")}
                         className="bg-blue-800 hover:bg-blue-900 text-white font-semibold py-2 px-4 rounded-2xl"
-                        
+
                     >
                         Vendidos
                     </button>
@@ -319,7 +320,7 @@ export default function Dashboard() {
                     <button
                         onClick={() => setFiltro("naoVendidos")}
                         className="bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded-2xl"
-                        
+
                     >
                         Não Vendidos
                     </button>
@@ -373,7 +374,7 @@ export default function Dashboard() {
                 <p></p>
             )}
 
-            
+
             {modalAberto && (
                 <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
                     <div className="bg-white p-6 rounded shadow-lg max-w-lg w-full">
