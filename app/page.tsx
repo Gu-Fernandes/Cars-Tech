@@ -1,8 +1,8 @@
 "use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import Head from 'next/head';
 
+// Exportação padrão, Página inicial login
 export default function Home() {
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
@@ -10,11 +10,13 @@ export default function Home() {
   const [carregando, setCarregando] = useState(false);
   const router = useRouter();
 
+  //Form Login
   const handleLogin = async (e: React.FormEvent) => {
-    e.preventDefault();
+    e.preventDefault(); // Garante que a página não recarregue ao submeter
     setCarregando(true);
     setErro("");
 
+    //Tentativa de conexão com a API
     try {
       const resposta = await fetch("https://cars-api-y4ym.onrender.com/api/auth/login", {
         method: "POST",
@@ -25,9 +27,7 @@ export default function Home() {
       });
 
       const dados = await resposta.json();
-
-
-
+      
       if (!resposta.ok) {
         throw new Error(dados.mensagem || "Usuário ou senha incorretos!");
       }
@@ -35,8 +35,7 @@ export default function Home() {
       localStorage.setItem("token", dados.access_token);
       localStorage.setItem("email", email);
 
-
-
+      //redireciona para a página de dashboard
       router.push("/dashboard");
 
     } catch (err: any) {
@@ -55,7 +54,11 @@ export default function Home() {
 
       >
         <h1 className="text-2xl font-bold text-center text-gray-900 dark:text-white">Login</h1>
-
+        {erro && (
+          <p className="text-red-500 text-center text-sm">
+            {erro}
+          </p>
+        )}
         
         <input
           type="email"
